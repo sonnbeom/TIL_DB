@@ -32,6 +32,7 @@ public class OptimisticLockEnrollmentService implements EnrollmentService{
     private final StudentScheduleSlotRepository studentScheduleSlotRepository;
 
     @Override
+    @Transactional
     public EnrollmentResult enroll(EnrollmentRequest enrollmentRequest) {
         Long studentId = enrollmentRequest.getStudentId();
         Long courseId = enrollmentRequest.getCourseId();

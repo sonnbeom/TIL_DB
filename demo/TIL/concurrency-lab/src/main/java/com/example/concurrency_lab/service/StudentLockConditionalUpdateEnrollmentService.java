@@ -11,6 +11,7 @@ import com.example.concurrency_lab.repository.*;
 import com.example.concurrency_lab.validator.EnrollmentValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class StudentLockConditionalUpdateEnrollmentService implements Enrollment
     private final StudentScheduleSlotRepository studentScheduleSlotRepository;
 
     @Override
+    @Transactional
     public EnrollmentResult enroll(EnrollmentRequest enrollmentRequest) {
         Long studentId = enrollmentRequest.getStudentId();
         Long courseId = enrollmentRequest.getCourseId();

@@ -34,6 +34,7 @@ public class DistributedLockEnrollmentService implements EnrollmentService{
     private final EnrollmentValidator validator;
 
     @Override
+    @Transactional
     public EnrollmentResult enroll(EnrollmentRequest request) {
         Long studentId = request.getStudentId();
         Long courseId = request.getCourseId();

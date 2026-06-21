@@ -1,3 +1,11 @@
+-- 반복 실행 안전성을 위해 FK 의존 역순으로 삭제
+DROP TABLE IF EXISTS student_schedule_slot;
+DROP TABLE IF EXISTS enrollment;
+DROP TABLE IF EXISTS course_time_slot;
+DROP TABLE IF EXISTS time_slot;
+DROP TABLE IF EXISTS course;
+DROP TABLE IF EXISTS student;
+
 CREATE TABLE student (
                          id BIGINT AUTO_INCREMENT PRIMARY KEY,
                          name VARCHAR(50) NOT NULL,

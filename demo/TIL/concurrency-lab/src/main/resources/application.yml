@@ -1,0 +1,40 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/enrollment_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: enrollment_user
+    password: enrollment_pass
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 200      # JMeter로 동시 요청 몰릴 때 커넥션 풀 병목을 줄이기 위해 넉넉히 설정
+      connection-timeout: 5000    # 커넥션 자체를 못 얻는 경우도 너무 오래 기다리지 않도록
+
+  jpa:
+    hibernate:
+      ddl-auto: none              # schema.sql로 직접 스키마 관리하므로 JPA 자동 DDL 비활성화
+    show-sql: false               # 부하테스트 중 로그 I/O가 성능에 영향 주지 않도록 끔 (디버깅 시에만 true)
+    properties:
+      hibernate:
+        format_sql: false
+
+  sql:
+    init:
+      mode: never                # 실행할 때마다 schema.sql 재실행 (반복 실험용, 시드 데이터 유지하려면 never로 변경)
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 2000ms             # Redis 응답 지연 시 무한 대기 방지
+
+server:
+  port: 8080
+  tomcat:
+    threads:
+      max: 300                    # 동시 요청 처리 스레드 수 - JMeter 동시 사용자 수에 맞춰 조정 필요
+
+enrollment:
+  strategy: idea1                 # idea1 | pessimistic | optimistic | distributed
+
+logging:
+  level:
+    org.hibernate.SQL: warn

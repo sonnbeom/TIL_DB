@@ -23,7 +23,7 @@ public interface EnrollmentRepository extends JpaRepository<Enrollment, Long> {
 
     @Query(
             value = """
-                SELECT COALESCE(SUM(c.credit, 0))
+                SELECT COALESCE(SUM(c.credit), 0)
                 FROM enrollment e
                 JOIN course c ON e.course_id = c.id
                 WHERE e.student_id = :studentId
