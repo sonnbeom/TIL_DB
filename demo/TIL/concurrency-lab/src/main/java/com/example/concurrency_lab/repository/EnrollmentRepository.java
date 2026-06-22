@@ -1,7 +1,9 @@
 package com.example.concurrency_lab.repository;
 
 import com.example.concurrency_lab.domain.Enrollment;
+import io.lettuce.core.dynamic.annotation.Param;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
@@ -12,4 +14,9 @@ public interface EnrollmentRepository extends JpaRepository<Enrollment, Long> {
 
     // 조건1(18학점 계산)용 - 학생의 신청 강의 목록 조회
     List<Enrollment> findByStudentId(Long studentId);
+
+    @Query("SELECT COALESCE(SUM(c.credit), 0) FROM Enrollment e " +
+            "JOIN Course c ON e.courseId = c.id " +
+            "WHERE e.studentId = :studentId")
+    Integer sumCreditByStudentId(@Param("studentId") Long studentId);
 }
