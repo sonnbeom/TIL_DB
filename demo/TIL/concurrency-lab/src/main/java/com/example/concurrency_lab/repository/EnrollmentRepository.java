@@ -1,5 +1,10 @@
 package com.example.concurrency_lab.repository;
 
+import com.example.concurrency_lab.domain.Enrollment;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
 public interface EnrollmentRepository extends JpaRepository<Enrollment, Long> {
 
     // 조건2(중복신청) 애플리케이션 레벨 1차 체크
