@@ -1,0 +1,281 @@
+2026-07-21 15:34:45,849 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2026-07-21 15:34:45,859 INFO o.a.j.JMeter: Loading user properties from: C:\apache-jmeter-5.6.3\bin\user.properties
+2026-07-21 15:34:45,859 INFO o.a.j.JMeter: Loading system properties from: C:\apache-jmeter-5.6.3\bin\system.properties
+2026-07-21 15:34:45,859 INFO o.a.j.JMeter: Setting JMeter property: host=localhost
+2026-07-21 15:34:45,859 INFO o.a.j.JMeter: Setting JMeter property: port=8080
+2026-07-21 15:34:45,859 INFO o.a.j.JMeter: Setting JMeter property: year=2026
+2026-07-21 15:34:45,859 INFO o.a.j.JMeter: Setting JMeter property: threads=50
+2026-07-21 15:34:45,859 INFO o.a.j.JMeter: Setting JMeter property: loops=200
+2026-07-21 15:34:45,859 INFO o.a.j.JMeter: Setting JMeter property: rampup=5
+2026-07-21 15:34:45,863 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
+2026-07-21 15:34:45,863 INFO o.a.j.JMeter: Version 5.6.3
+2026-07-21 15:34:45,863 INFO o.a.j.JMeter: java.version=17.0.19
+2026-07-21 15:34:45,863 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
+2026-07-21 15:34:45,863 INFO o.a.j.JMeter: os.name=Windows 11
+2026-07-21 15:34:45,863 INFO o.a.j.JMeter: os.arch=amd64
+2026-07-21 15:34:45,863 INFO o.a.j.JMeter: os.version=10.0
+2026-07-21 15:34:45,863 INFO o.a.j.JMeter: file.encoding=MS949
+2026-07-21 15:34:45,863 INFO o.a.j.JMeter: java.awt.headless=true
+2026-07-21 15:34:45,863 INFO o.a.j.JMeter: Max memory     =1073741824
+2026-07-21 15:34:45,863 INFO o.a.j.JMeter: Available Processors =24
+2026-07-21 15:34:45,868 INFO o.a.j.JMeter: Default Locale=English (EN)
+2026-07-21 15:34:45,868 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2026-07-21 15:34:45,868 INFO o.a.j.JMeter: JMeterHome=C:\apache-jmeter-5.6.3
+2026-07-21 15:34:45,868 INFO o.a.j.JMeter: user.dir  =C:\dev_son\TIL_Sharding\demo\TIL\cashe\cahse-test
+2026-07-21 15:34:45,868 INFO o.a.j.JMeter: PWD       =C:\dev_son\TIL_Sharding\demo\TIL\cashe\cahse-test
+2026-07-21 15:34:45,870 INFO o.a.j.JMeter: IP: 172.17.144.1 Name: DESKTOP-FCD2MTG FullName: DESKTOP-FCD2MTG.mshome.net
+2026-07-21 15:34:45,878 INFO o.a.j.JMeter: Setting property 'jmeter.reportgenerator.outputdir' to:'C:\dev_son\TIL_Sharding\demo\TIL\cashe\cahse-test\results\after\report_10000'
+2026-07-21 15:34:45,879 INFO o.a.j.s.FileServer: Default base='C:\dev_son\TIL_Sharding\demo\TIL\cashe\cahse-test'
+2026-07-21 15:34:45,880 INFO o.a.j.s.FileServer: Set new base='C:\dev_son\TIL_Sharding\demo\TIL\cashe\cahse-test\jmeter'
+2026-07-21 15:34:45,983 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2026-07-21 15:34:45,994 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2026-07-21 15:34:45,996 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2026-07-21 15:34:45,998 INFO o.a.j.s.SaveService: Loading file: C:\dev_son\TIL_Sharding\demo\TIL\cashe\cahse-test\jmeter\popular-test-plan.jmx
+2026-07-21 15:34:46,026 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-07-21 15:34:46,026 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-07-21 15:34:46,026 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-07-21 15:34:46,026 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-07-21 15:34:46,026 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2026-07-21 15:34:46,026 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2026-07-21 15:34:46,038 INFO o.a.j.JMeter: Creating summariser <summary>
+2026-07-21 15:34:46,040 INFO o.a.j.r.d.ReportGenerator: ReportGenerator will use for Parsing the separator: ','
+2026-07-21 15:34:46,041 INFO o.a.j.r.d.ReportGenerator: Will generate report at end of test from  results file: C:/dev_son/TIL_Sharding/demo/TIL/cashe/cahse-test/results/after/result_10000.jtl
+2026-07-21 15:34:46,041 INFO o.a.j.r.d.ReportGenerator: Reading report generator properties from: C:\apache-jmeter-5.6.3\bin\reportgenerator.properties
+2026-07-21 15:34:46,041 INFO o.a.j.r.d.ReportGenerator: Merging with JMeter properties
+2026-07-21 15:34:46,043 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.temp_dir' not found, using default value 'temp' instead.
+2026-07-21 15:34:46,044 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.apdex_per_transaction' not found, using default value 'null' instead.
+2026-07-21 15:34:46,045 INFO o.a.j.r.c.ReportGeneratorConfiguration: apdex_per_transaction is empty, not APDEX per transaction customization
+2026-07-21 15:34:46,045 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.sample_filter' not found, using default value 'null' instead.
+2026-07-21 15:34:46,045 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.report_title' not found, using default value 'null' instead.
+2026-07-21 15:34:46,045 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.start_date' not found, using default value 'null' instead.
+2026-07-21 15:34:46,045 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.end_date' not found, using default value 'null' instead.
+2026-07-21 15:34:46,045 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.date_format' not found, using default value 'null' instead.
+2026-07-21 15:34:46,045 INFO o.a.j.r.c.ReportGeneratorConfiguration: Will use date range start date: null, end date: null
+2026-07-21 15:34:46,048 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.totalTPS.exclude_controllers' not found, using default value 'false' instead.
+2026-07-21 15:34:46,049 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.activeThreadsOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-07-21 15:34:46,049 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.timeVsThreads.exclude_controllers' not found, using default value 'false' instead.
+2026-07-21 15:34:46,049 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimeDistribution.exclude_controllers' not found, using default value 'false' instead.
+2026-07-21 15:34:46,049 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.transactionsPerSecond.exclude_controllers' not found, using default value 'false' instead.
+2026-07-21 15:34:46,049 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimePercentiles.exclude_controllers' not found, using default value 'false' instead.
+2026-07-21 15:34:46,049 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimePercentilesOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-07-21 15:34:46,049 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimesOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-07-21 15:34:46,049 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.connectTimeOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-07-21 15:34:46,049 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.latenciesOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-07-21 15:34:46,049 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.json.filters_only_sample_series' not found, using default value 'true' instead.
+2026-07-21 15:34:46,049 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.json.series_filter' not found, using default value '' instead.
+2026-07-21 15:34:46,050 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.json.show_controllers_only' not found, using default value 'false' instead.
+2026-07-21 15:34:46,050 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.html.filters_only_sample_series' not found, using default value 'true' instead.
+2026-07-21 15:34:46,050 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.html.series_filter' not found, using default value '' instead.
+2026-07-21 15:34:46,050 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.html.show_controllers_only' not found, using default value 'false' instead.
+2026-07-21 15:34:46,056 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2026-07-21 15:34:46,056 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2026-07-21 15:34:46,056 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2026-07-21 15:34:46,058 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
+2026-07-21 15:34:46,058 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
+2026-07-21 15:34:46,101 INFO o.a.j.JMeter: Running test (1784615686101)
+2026-07-21 15:34:46,110 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : Popular API Load
+2026-07-21 15:34:46,110 INFO o.a.j.e.StandardJMeterEngine: Starting 50 threads for group Popular API Load.
+2026-07-21 15:34:46,110 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2026-07-21 15:34:46,110 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=50 ramp-up=5 delayedStart=false
+2026-07-21 15:34:46,115 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-1
+2026-07-21 15:34:46,124 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2026-07-21 15:34:46,124 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2026-07-21 15:34:46,128 INFO o.a.j.p.h.s.HTTPHCAbstractImpl: Local host = DESKTOP-FCD2MTG
+2026-07-21 15:34:46,131 INFO o.a.j.p.h.s.HTTPHC4Impl: HTTP request retry count = 0
+2026-07-21 15:34:46,131 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2026-07-21 15:34:46,131 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to UTF-8
+2026-07-21 15:34:46,131 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2026-07-21 15:34:46,131 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2026-07-21 15:34:46,213 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-2
+2026-07-21 15:34:46,313 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-3
+2026-07-21 15:34:46,406 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-1
+2026-07-21 15:34:46,406 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-1
+2026-07-21 15:34:46,413 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-4
+2026-07-21 15:34:46,423 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-2
+2026-07-21 15:34:46,424 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-2
+2026-07-21 15:34:46,513 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-5
+2026-07-21 15:34:46,515 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-3
+2026-07-21 15:34:46,515 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-3
+2026-07-21 15:34:46,593 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-4
+2026-07-21 15:34:46,593 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-4
+2026-07-21 15:34:46,613 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-6
+2026-07-21 15:34:46,704 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-5
+2026-07-21 15:34:46,704 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-5
+2026-07-21 15:34:46,713 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-7
+2026-07-21 15:34:46,812 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-8
+2026-07-21 15:34:46,836 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-6
+2026-07-21 15:34:46,837 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-6
+2026-07-21 15:34:46,905 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-7
+2026-07-21 15:34:46,905 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-7
+2026-07-21 15:34:46,912 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-9
+2026-07-21 15:34:46,996 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-8
+2026-07-21 15:34:46,996 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-8
+2026-07-21 15:34:47,012 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-10
+2026-07-21 15:34:47,112 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-11
+2026-07-21 15:34:47,131 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-9
+2026-07-21 15:34:47,131 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-9
+2026-07-21 15:34:47,210 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-12
+2026-07-21 15:34:47,231 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-10
+2026-07-21 15:34:47,231 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-10
+2026-07-21 15:34:47,311 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-13
+2026-07-21 15:34:47,326 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-11
+2026-07-21 15:34:47,326 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-11
+2026-07-21 15:34:47,412 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-14
+2026-07-21 15:34:47,426 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-12
+2026-07-21 15:34:47,426 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-12
+2026-07-21 15:34:47,511 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-15
+2026-07-21 15:34:47,527 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-13
+2026-07-21 15:34:47,527 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-13
+2026-07-21 15:34:47,610 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-16
+2026-07-21 15:34:47,623 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-14
+2026-07-21 15:34:47,623 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-14
+2026-07-21 15:34:47,690 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-15
+2026-07-21 15:34:47,690 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-15
+2026-07-21 15:34:47,711 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-17
+2026-07-21 15:34:47,788 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-16
+2026-07-21 15:34:47,788 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-16
+2026-07-21 15:34:47,810 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-18
+2026-07-21 15:34:47,911 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-19
+2026-07-21 15:34:47,923 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-17
+2026-07-21 15:34:47,923 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-17
+2026-07-21 15:34:48,011 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-20
+2026-07-21 15:34:48,024 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-18
+2026-07-21 15:34:48,024 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-18
+2026-07-21 15:34:48,110 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-21
+2026-07-21 15:34:48,124 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-19
+2026-07-21 15:34:48,124 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-19
+2026-07-21 15:34:48,210 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-22
+2026-07-21 15:34:48,221 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-20
+2026-07-21 15:34:48,221 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-20
+2026-07-21 15:34:48,310 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-23
+2026-07-21 15:34:48,322 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-21
+2026-07-21 15:34:48,322 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-21
+2026-07-21 15:34:48,412 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-24
+2026-07-21 15:34:48,427 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-22
+2026-07-21 15:34:48,427 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-22
+2026-07-21 15:34:48,511 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-25
+2026-07-21 15:34:48,523 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-23
+2026-07-21 15:34:48,523 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-23
+2026-07-21 15:34:48,611 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-26
+2026-07-21 15:34:48,624 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-24
+2026-07-21 15:34:48,624 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-24
+2026-07-21 15:34:48,710 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-27
+2026-07-21 15:34:48,722 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-25
+2026-07-21 15:34:48,722 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-25
+2026-07-21 15:34:48,812 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-28
+2026-07-21 15:34:48,826 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-26
+2026-07-21 15:34:48,826 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-26
+2026-07-21 15:34:48,912 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-29
+2026-07-21 15:34:48,923 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-27
+2026-07-21 15:34:48,923 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-27
+2026-07-21 15:34:49,011 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-30
+2026-07-21 15:34:49,023 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-28
+2026-07-21 15:34:49,023 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-28
+2026-07-21 15:34:49,111 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-31
+2026-07-21 15:34:49,123 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-29
+2026-07-21 15:34:49,123 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-29
+2026-07-21 15:34:49,210 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-32
+2026-07-21 15:34:49,223 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-30
+2026-07-21 15:34:49,223 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-30
+2026-07-21 15:34:49,310 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-33
+2026-07-21 15:34:49,328 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-31
+2026-07-21 15:34:49,328 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-31
+2026-07-21 15:34:49,411 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-34
+2026-07-21 15:34:49,430 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-32
+2026-07-21 15:34:49,430 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-32
+2026-07-21 15:34:49,511 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-35
+2026-07-21 15:34:49,530 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-33
+2026-07-21 15:34:49,530 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-33
+2026-07-21 15:34:49,606 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-34
+2026-07-21 15:34:49,606 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-34
+2026-07-21 15:34:49,610 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-36
+2026-07-21 15:34:49,690 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-35
+2026-07-21 15:34:49,690 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-35
+2026-07-21 15:34:49,710 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-37
+2026-07-21 15:34:49,810 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-38
+2026-07-21 15:34:49,819 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-36
+2026-07-21 15:34:49,819 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-36
+2026-07-21 15:34:49,910 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-39
+2026-07-21 15:34:49,929 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-37
+2026-07-21 15:34:49,929 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-37
+2026-07-21 15:34:50,010 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-40
+2026-07-21 15:34:50,024 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-38
+2026-07-21 15:34:50,024 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-38
+2026-07-21 15:34:50,109 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-39
+2026-07-21 15:34:50,109 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-39
+2026-07-21 15:34:50,113 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-41
+2026-07-21 15:34:50,181 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-40
+2026-07-21 15:34:50,181 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-40
+2026-07-21 15:34:50,212 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-42
+2026-07-21 15:34:50,283 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-41
+2026-07-21 15:34:50,284 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-41
+2026-07-21 15:34:50,310 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-43
+2026-07-21 15:34:50,411 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-44
+2026-07-21 15:34:50,431 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-42
+2026-07-21 15:34:50,431 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-42
+2026-07-21 15:34:50,511 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-45
+2026-07-21 15:34:50,528 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-43
+2026-07-21 15:34:50,528 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-43
+2026-07-21 15:34:50,601 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-44
+2026-07-21 15:34:50,601 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-44
+2026-07-21 15:34:50,610 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-46
+2026-07-21 15:34:50,667 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-45
+2026-07-21 15:34:50,667 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-45
+2026-07-21 15:34:50,710 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-47
+2026-07-21 15:34:50,792 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-46
+2026-07-21 15:34:50,792 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-46
+2026-07-21 15:34:50,811 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-48
+2026-07-21 15:34:50,911 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-49
+2026-07-21 15:34:50,925 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-47
+2026-07-21 15:34:50,925 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-47
+2026-07-21 15:34:51,010 INFO o.a.j.t.JMeterThread: Thread started: Popular API Load 1-50
+2026-07-21 15:34:51,023 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-48
+2026-07-21 15:34:51,023 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-48
+2026-07-21 15:34:51,125 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-49
+2026-07-21 15:34:51,126 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-49
+2026-07-21 15:34:51,190 INFO o.a.j.t.JMeterThread: Thread is done: Popular API Load 1-50
+2026-07-21 15:34:51,190 INFO o.a.j.t.JMeterThread: Thread finished: Popular API Load 1-50
+2026-07-21 15:34:51,190 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2026-07-21 15:34:51,190 INFO o.a.j.r.Summariser: summary =  10000 in 00:00:05 = 1965.0/s Avg:     0 Min:     0 Max:    28 Err:     0 (0.00%)
+2026-07-21 15:34:51,191 INFO o.a.j.JMeter: Generating Dashboard
+2026-07-21 15:34:51,191 INFO o.a.j.r.d.ReportGenerator: Flushing result collector before report Generation
+2026-07-21 15:34:51,196 INFO o.a.j.r.p.NormalizerSampleConsumer: Using format, 'ms', to parse timeStamp field
+2026-07-21 15:34:51,385 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.AggregateConsumer#stopProducing(): beginDate produced 0 samples
+2026-07-21 15:34:51,386 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.AggregateConsumer#stopProducing(): endDate produced 0 samples
+2026-07-21 15:34:51,392 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.ApdexSummaryConsumer#stopProducing(): apdexSummary produced 0 samples
+2026-07-21 15:34:51,392 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.RequestsSummaryConsumer#stopProducing(): requestsSummary produced 0 samples
+2026-07-21 15:34:51,404 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.StatisticsSummaryConsumer#stopProducing(): statisticsSummary produced 0 samples
+2026-07-21 15:34:51,407 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.Top5ErrorsBySamplerConsumer#stopProducing(): top5ErrorsBySampler produced 0 samples
+2026-07-21 15:34:51,407 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.ErrorsSummaryConsumer#stopProducing(): errorsSummary produced 0 samples
+2026-07-21 15:34:51,407 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.HitsPerSecondGraphConsumer#stopProducing(): hitsPerSecond produced 0 samples
+2026-07-21 15:34:51,455 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.LatencyVSRequestGraphConsumer#stopProducing(): latencyVsRequest produced 0 samples
+2026-07-21 15:34:51,455 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.SyntheticResponseTimeDistributionGraphConsumer#stopProducing(): syntheticResponseTimeDistribution produced 0 samples
+2026-07-21 15:34:51,455 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.BytesThroughputGraphConsumer#stopProducing(): bytesThroughputOverTime produced 0 samples
+2026-07-21 15:34:51,456 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.CodesPerSecondGraphConsumer#stopProducing(): codesPerSecond produced 0 samples
+2026-07-21 15:34:51,501 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimeVSRequestGraphConsumer#stopProducing(): responseTimeVsRequest produced 0 samples
+2026-07-21 15:34:51,501 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.FilterConsumer#stopProducing(): startIntervalControlerFilter produced 70000 samples
+2026-07-21 15:34:51,502 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.TotalTPSGraphConsumer#stopProducing(): totalTPS produced 0 samples
+2026-07-21 15:34:51,502 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ActiveThreadsGraphConsumer#stopProducing(): activeThreadsOverTime produced 0 samples
+2026-07-21 15:34:51,502 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.TimeVSThreadGraphConsumer#stopProducing(): timeVsThreads produced 0 samples
+2026-07-21 15:34:51,502 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimeDistributionGraphConsumer#stopProducing(): responseTimeDistribution produced 0 samples
+2026-07-21 15:34:51,502 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.TransactionsPerSecondGraphConsumer#stopProducing(): transactionsPerSecond produced 0 samples
+2026-07-21 15:34:51,502 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimePercentilesGraphConsumer#stopProducing(): responseTimePercentiles produced 0 samples
+2026-07-21 15:34:51,503 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimePercentilesOverTimeGraphConsumer#stopProducing(): responseTimePercentilesOverTime produced 0 samples
+2026-07-21 15:34:51,503 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimeOverTimeGraphConsumer#stopProducing(): responseTimesOverTime produced 0 samples
+2026-07-21 15:34:51,503 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ConnectTimeOverTimeGraphConsumer#stopProducing(): connectTimeOverTime produced 0 samples
+2026-07-21 15:34:51,503 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.LatencyOverTimeGraphConsumer#stopProducing(): latenciesOverTime produced 0 samples
+2026-07-21 15:34:51,504 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.FilterConsumer#stopProducing(): nameFilter produced 150000 samples
+2026-07-21 15:34:51,504 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.FilterConsumer#stopProducing(): dateRangeFilter produced 30000 samples
+2026-07-21 15:34:51,504 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.NormalizerSampleConsumer#stopProducing(): normalizer produced 10000 samples
+2026-07-21 15:34:51,504 INFO o.a.j.r.p.CsvFileSampleSource: produce(): 10000 samples produced in 297ms on channel 0
+2026-07-21 15:34:51,504 INFO o.a.j.r.d.ReportGenerator: Exporting data using exporter:'json' of className:'org.apache.jmeter.report.dashboard.JsonExporter'
+2026-07-21 15:34:51,542 INFO o.a.j.r.d.JsonExporter: Found data for consumer statisticsSummary?in context
+2026-07-21 15:34:51,542 INFO o.a.j.r.d.JsonExporter: Creating statistics for overall
+2026-07-21 15:34:51,542 INFO o.a.j.r.d.JsonExporter: Creating statistics for other transactions
+2026-07-21 15:34:51,543 INFO o.a.j.r.d.JsonExporter: Checking output folder
+2026-07-21 15:34:51,543 INFO o.a.j.r.d.JsonExporter: Writing statistics JSON to C:\dev_son\TIL_Sharding\demo\TIL\cashe\cahse-test\results\after\report_10000\statistics.json
+2026-07-21 15:34:51,565 INFO o.a.j.r.d.ReportGenerator: Exporting data using exporter:'html' of className:'org.apache.jmeter.report.dashboard.HtmlTemplateExporter'
+2026-07-21 15:34:51,567 INFO o.a.j.r.d.HtmlTemplateExporter: Will generate dashboard in folder: C:\dev_son\TIL_Sharding\demo\TIL\cashe\cahse-test\results\after\report_10000
+2026-07-21 15:34:51,630 INFO o.a.j.r.d.HtmlTemplateExporter: Report will be generated in: C:\dev_son\TIL_Sharding\demo\TIL\cashe\cahse-test\results\after\report_10000, creating folder structure
+2026-07-21 15:34:51,631 INFO o.a.j.r.d.TemplateVisitor: Copying folder from 'C:\apache-jmeter-5.6.3\bin\report-template' to 'C:\dev_son\TIL_Sharding\demo\TIL\cashe\cahse-test\results\after\report_10000', got message: C:\dev_son\TIL_Sharding\demo\TIL\cashe\cahse-test\results\after\report_10000, found non empty folder with following content [C:\dev_son\TIL_Sharding\demo\TIL\cashe\cahse-test\results\after\report_10000\statistics.json], will be ignored
+2026-07-21 15:34:51,792 INFO o.a.j.JMeter: Dashboard generated

@@ -6,14 +6,22 @@ services:
     container_name: cache-aside-mysql
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_ROOT_PASSWORD: root1234
+      MYSQL_DATABASE: cacheaside
+      MYSQL_USER: app
+      MYSQL_PASSWORD: app1234
     ports:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     command:
-      --character-set-server=utf8mb4
-      --collation-server=utf8mb4_unicode_ci
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot1234"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
 
   redis:
     image: redis:7
@@ -21,9 +29,11 @@ services:
     restart: unless-stopped
     ports:
       - "6379:6379"
-    volumes:
-      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
 
 volumes:
   mysql_data:
-  redis_data:
