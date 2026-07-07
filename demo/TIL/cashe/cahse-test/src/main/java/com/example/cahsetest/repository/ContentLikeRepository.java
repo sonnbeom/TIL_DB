@@ -1,5 +1,8 @@
 package com.example.cahsetest.repository;
 
+import com.example.cahsetest.domain.ContentLike;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 public interface ContentLikeRepository extends JpaRepository<ContentLike, Long> {
 
     /** 이미 좋아요 눌렀는지 체크 (중복 방지) */
