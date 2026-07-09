@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cahsetest.repository.PopularContentMapper">
+
+    <resultMap id="PopularContentResultMap" type="com.example.cahsetest.dto.PopularContentResponse">
+        <constructor>
+            <idArg column="id" javaType="java.lang.Long"/>
+            <arg column="title" javaType="java.lang.String"/>
+            <arg column="created_at" javaType="java.time.LocalDateTime"/>
+            <arg column="like_count" javaType="java.lang.Long"/>
+        </constructor>
+    </resultMap>
+
+    <select id="findTop10" resultMap="PopularContentResultMap">
+        SELECT c.id, c.title, c.created_at, s.like_count
+        FROM content c
+        JOIN content_like_stat s ON c.id = s.content_id
+        WHERE s.liked_at = #{likedAt}
+        ORDER BY s.like_count DESC
+        LIMIT 10
+    </select>
+
+</mapper>
