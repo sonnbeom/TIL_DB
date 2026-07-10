@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>S08 · 제조자원 자산 관리 — DK엠텍 AAS</title>
+    <link rel="stylesheet" th:href="@{/resources/css/fonts.css}" />
+    <link rel="stylesheet" th:href="@{/resources/css/app.css}" />
+</head>
+<body>
+
+<div class="app">
+    <nav th:replace="~{fragments/layout :: sidebar(active='s08')}"></nav>
+
+    <div class="main">
+        <div class="topbar">
+            <div class="topbar-left">
+                <div class="crumb">자산관리 · DK엠텍 소유 자원</div>
+                <h1>제조자원 자산 관리</h1>
+            </div>
+            <div class="topbar-right">
+                <button class="btn primary">＋ 자원 등록</button>
+            </div>
+        </div>
+
+        <div class="registry-layout">
+            <div class="registry-list">
+                <div class="result-meta" style="padding:0 0 10px;" th:text="${resourceSummary}">Facility 1건 · Equipment 8건</div>
+                <div class="doc-table">
+                    <div class="overflow-x">
+                        <table>
+                            <thead>
+                            <tr><th>자원명</th><th>분류</th><th>위치</th><th>정비 이력</th><th>상태</th></tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="row : ${rows}" th:class="${row.id == selectedId} ? 'row-selected' : ''">
+                                <td class="doc-name">
+                                    <a th:href="@{/s08(resource=${row.id})}" style="color:inherit; text-decoration:none;" th:text="${row.name}">자원명</a>
+                                </td>
+                                <td th:text="${row.categoryLabel}">분류</td>
+                                <td th:if="${row.location != null}" th:text="${row.location}">위치</td>
+                                <td th:unless="${row.location != null}">—</td>
+                                <td>
+                                    <span th:if="${row.maintenanceLabel != null}" class="ci-status" th:classappend="${row.maintenanceClass}" th:text="${row.maintenanceLabel}">이력</span>
+                                    <span th:unless="${row.maintenanceLabel != null}">—</span>
+                                </td>
+                                <td><span class="badge" th:classappend="${row.statusClass}" th:text="${row.statusLabel}">상태</span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="registry-form" th:if="${selected != null}">
+                <div class="registry-form-head">
+                    <th:block th:text="${selected.name}">자원명</th:block>
+                    <span class="section-tag" th:text="${selected.type}">Facility</span>
+                </div>
+
+                <th:block th:if="${detail != null}">
+                    <div class="field-grid" style="grid-template-columns:1fr;">
+                        <div class="field">
+                            <label>명판 정보 <span class="req">DigitalNameplate</span></label>
+                            <input type="text" th:value="${detail.name}" disabled style="opacity:.7;" />
+                        </div>
+                        <div class="field">
+                            <label>연면적 (㎡)</label>
+                            <input type="text" th:value="${detail.area}" />
+                        </div>
+                        <div class="field">
+                            <label>준공년도</label>
+                            <input type="text" th:value="${detail.builtYear}" />
+                        </div>
+                        <div class="field">
+                            <label>층수 / 구성</label>
+                            <input type="text" th:value="${detail.floors}" />
+                        </div>
+                    </div>
+
+                    <div class="field-note" style="margin-top:16px;">
+                        <svg class="ico icon-svg" width="13" height="13" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5h.01"/></svg>
+                        공장건물·설비의 명판·사양 정보를 기존 카탈로그·구매계약서로 확보할 수 있는지 확인이 필요합니다. 확보 전까지는 현장 실사 값으로 우선 등록합니다.
+                    </div>
+
+                    <div class="form-footer" style="padding-top:20px;">
+                        <button class="btn">취소</button>
+                        <button class="btn primary">저장</button>
+                    </div>
+                </th:block>
+
+                <div class="field-note" style="margin-top:16px;" th:if="${detail == null}">
+                    <svg class="ico icon-svg" width="13" height="13" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5h.01"/></svg>
+                    <span>선택한 항목에는 아직 등록된 상세 정보가 없습니다. 좌측 목록에서 다른 자원을 선택해 보세요.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button class="theme-toggle" onclick="document.documentElement.setAttribute('data-theme', document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark')">테마 전환</button>
+</body>
+</html>

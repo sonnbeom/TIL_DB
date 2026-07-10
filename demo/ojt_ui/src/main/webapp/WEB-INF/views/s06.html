@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>S06 · 자산 등록·수정 — DK엠텍 AAS</title>
+    <link rel="stylesheet" th:href="@{/resources/css/fonts.css}" />
+    <link rel="stylesheet" th:href="@{/resources/css/app.css}" />
+</head>
+<body>
+
+<div class="app">
+    <nav th:replace="~{fragments/layout :: sidebar(active='s06')}"></nav>
+
+    <div class="main">
+        <div class="topbar">
+            <div class="topbar-left">
+                <div class="crumb">자산관리 / 신규 등록</div>
+                <h1>호선 등록</h1>
+            </div>
+            <div class="topbar-right">
+                <button class="btn">취소</button>
+                <button class="btn primary">저장</button>
+            </div>
+        </div>
+
+        <div class="content-single">
+
+            <details class="form-section" open>
+                <summary>기본정보 <span class="section-tag">DigitalNameplate</span> <span class="chevron">▸</span></summary>
+                <div class="form-body">
+                    <div class="field-grid">
+                        <div class="field">
+                            <label>호선명<span class="req">*</span></label>
+                            <input type="text" th:value="${vessel.name}" />
+                        </div>
+                        <div class="field">
+                            <label>프로젝트 코드<span class="req">*</span></label>
+                            <input type="text" th:value="${vessel.projectCode}" />
+                        </div>
+                        <div class="field">
+                            <label>발주처<span class="req">*</span></label>
+                            <input type="text" th:value="${vessel.client}" />
+                        </div>
+                        <div class="field">
+                            <label>발주유형<span class="req">*</span></label>
+                            <select>
+                                <option th:selected="${vessel.orderType == '민수'}">민수</option>
+                                <option th:selected="${vessel.orderType == '관수'}">관수</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="form-section" open>
+                <summary>기술사양 <span class="section-tag">TechnicalData</span> <span class="chevron">▸</span></summary>
+                <div class="form-body">
+                    <div class="field-grid">
+                        <div class="field">
+                            <label>선종 (VesselCategory)<span class="req">*</span></label>
+                            <select>
+                                <option th:selected="${vessel.vesselCategory == '레저용'}">레저용</option>
+                                <option th:selected="${vessel.vesselCategory == '관공선'}">관공선</option>
+                                <option th:selected="${vessel.vesselCategory == '어선'}">어선</option>
+                                <option th:selected="${vessel.vesselCategory == '경비정'}">경비정</option>
+                                <option th:selected="${vessel.vesselCategory == '작업선'}">작업선</option>
+                                <option th:selected="${vessel.vesselCategory == '여객용'}">여객용</option>
+                                <option th:selected="${vessel.vesselCategory == '외항선'}">외항선</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label>재질 (HullMaterial)<span class="req">*</span></label>
+                            <select>
+                                <option th:selected="${vessel.hullMaterial == 'FRP'}">FRP</option>
+                                <option th:selected="${vessel.hullMaterial == '알루미늄'}">알루미늄</option>
+                                <option th:selected="${vessel.hullMaterial == '혼합'}">혼합</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label>총톤수 (t)<span class="req">*</span></label>
+                            <input type="text" th:value="${vessel.grossTonnage}" />
+                        </div>
+                        <div class="field">
+                            <label>규모 (자동계산)</label>
+                            <input type="text" th:value="${vessel.sizeClassAuto}" disabled style="opacity:0.6;" />
+                        </div>
+                    </div>
+
+                    <details style="margin-top:16px;">
+                        <summary style="cursor:pointer; font-size:12.5px; color:var(--ink-2); font-weight:600;">상세 제원 (KR Nexawave 표준 속성 — 선택 입력)</summary>
+                        <div style="margin-top:12px;">
+
+                            <div class="attr-category">식별정보</div>
+                            <div class="field-grid">
+                                <div class="field">
+                                    <label>IMO 번호</label>
+                                    <input type="text" placeholder="미입력" />
+                                </div>
+                                <div class="field">
+                                    <label>호출부호 (Call Sign)</label>
+                                    <input type="text" placeholder="미입력" />
+                                </div>
+                                <div class="field">
+                                    <label>선체번호 (야드넘버)</label>
+                                    <input type="text" th:value="${vessel.hullNumber}" />
+                                </div>
+                            </div>
+
+                            <div class="attr-category">국가 · 항구</div>
+                            <div class="field-grid">
+                                <div class="field">
+                                    <label>국적 (FLAG)</label>
+                                    <input type="text" th:value="${vessel.flag}" placeholder="S01 코드 검색" />
+                                </div>
+                                <div class="field">
+                                    <label>선적항 (PORT)</label>
+                                    <input type="text" th:value="${vessel.port}" placeholder="S01 코드 검색" />
+                                </div>
+                                <div class="field">
+                                    <label>항행구역 (VOYAGE)</label>
+                                    <select>
+                                        <option th:selected="${vessel.voyage == '연해구역'}">연해구역</option>
+                                        <option th:selected="${vessel.voyage == '근해구역'}">근해구역</option>
+                                        <option th:selected="${vessel.voyage == '원양구역'}">원양구역</option>
+                                        <option th:selected="${vessel.voyage == '평수구역'}">평수구역</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="attr-category">치수 <span class="unit-badge" style="margin-left:6px;">m</span></div>
+                            <div class="field-grid">
+                                <div class="field">
+                                    <label>전장 (LOA)</label>
+                                    <input type="text" placeholder="미입력" />
+                                </div>
+                                <div class="field">
+                                    <label>선급규칙상 길이</label>
+                                    <input type="text" placeholder="미입력" />
+                                </div>
+                                <div class="field">
+                                    <label>선급규칙상 너비</label>
+                                    <input type="text" placeholder="미입력" />
+                                </div>
+                                <div class="field">
+                                    <label>선급규칙상 깊이</label>
+                                    <input type="text" placeholder="미입력" />
+                                </div>
+                            </div>
+
+                            <div class="attr-category">톤수 <span class="unit-badge" style="margin-left:6px;">ton</span></div>
+                            <div class="field-grid">
+                                <div class="field">
+                                    <label>순톤수 (NT)</label>
+                                    <input type="text" placeholder="미입력" />
+                                </div>
+                                <div class="field">
+                                    <label>재화중량톤 (DW)</label>
+                                    <input type="text" placeholder="미입력" />
+                                </div>
+                            </div>
+
+                            <div class="attr-category">선급부호</div>
+                            <div class="field full">
+                                <label>선급부호 · 선체 (BUHO_HULL)</label>
+                                <input type="text" placeholder="미입력 — S03 검사기준 판정 후 자동 채움 예정" style="font-family:var(--font-mono, monospace); font-size:12px;" />
+                            </div>
+                            <div class="field full" style="margin-top:10px;">
+                                <label>선급부호 · 기관 (BUHO_MAC)</label>
+                                <input type="text" placeholder="미입력" style="font-family:var(--font-mono, monospace); font-size:12px;" />
+                            </div>
+
+                            <div class="field-note" style="margin-top:14px;">
+                                <svg class="ico icon-svg" width="13" height="13" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5h.01"/></svg>
+                                <span>상세 제원은 모두 선택 입력입니다. 건조 초기에는 진수일·선급검사완료일 등 미확정 항목이 많으므로, 확인되는 대로 <a href="s07.html" style="color:var(--accent); font-weight:600; text-decoration:none;">S07 자산 상세조회</a>에서 개별 갱신할 수 있습니다.</span>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            </details>
+
+            <details class="form-section" open>
+                <summary>검사기준 판정 <span class="section-tag">InspectionRecord</span> <span class="chevron">▸</span></summary>
+                <div class="form-body">
+                    <div class="field-note" style="margin-top:0;">
+                        <svg class="ico icon-svg" width="13" height="13" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5h.01"/></svg>
+                        <span>위 <b style="color:var(--ink);">기술사양</b>의 선종·재질·규모 값을 근거로 이 호선에 적용될 검사기준(S03 선급 검사기준 관리)을 판정합니다. 기술사양이 바뀌면 판정 결과도 다시 계산됩니다.</span>
+                    </div>
+
+                    <div class="field full" style="margin-top:14px;">
+                        <label>검사주체 (RegulatoryBody) <span class="req">* 항상 직접 선택</span></label>
+                        <div class="check-row">
+                            <label class="check-item"><input type="checkbox" checked /> KR 선급 등록</label>
+                            <label class="check-item"><input type="checkbox" /> KOMSA 법정검사</label>
+                        </div>
+                        <div class="field-note">
+                            <svg class="ico icon-svg" width="13" height="13" viewBox="0 0 24 24"><path d="M12 3.5 22 20H2z"/><path d="M12 10v4.5M12 17.5h.01"/></svg>
+                            관공선·어선은 KR 등록이 법정 의무가 아니라 선택 사항입니다 — 시스템이 등록 여부를 추측하지 않으므로 실제 계약 조건에 따라 직접 표시해 주세요.
+                        </div>
+                    </div>
+
+                    <div class="judge-panel state-auto">
+                        <div class="judge-head"><span class="judge-dot"></span><span th:text="'자동 확정 — ' + ${judgeRuleLabel}">자동 확정</span></div>
+                        <div class="judge-body"
+                             th:text="'선종(' + ${vessel.vesselCategory} + ') 기준으로 적용규칙이 단일 매칭되어 검사기준이 자동 연결됩니다. 버전 ' + ${judgeVersion} + ' (' + ${judgeDate} + ' 기준) · 서류 ' + ${judgeDocTotal} + '종(승인용 ' + ${judgeApprovalCount} + ' · 참고용 ' + ${judgeReferenceCount} + ')'">
+                            판정 결과
+                        </div>
+                        <div class="judge-doclist">
+                            <span class="tag" th:each="tag : ${judgeDocTags}" th:text="${tag}">서류명</span>
+                            <span class="tag" th:if="${judgeMoreCount > 0}" th:text="'+' + ${judgeMoreCount}">+0</span>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="form-section">
+                <summary>참고 — 선택 필요 상태 예시 (관공선·FRP 재질인 경우) <span class="chevron">▸</span></summary>
+                <div class="form-body">
+                    <div class="judge-panel state-choice">
+                        <div class="judge-head"><span class="judge-dot"></span>선택 필요 — 적용 규칙 중복 구간</div>
+                        <div class="judge-body">
+                            재질(FRP)과 선종(관공선)의 경우 FRP선 규칙과 고속경구조선 규칙의 적용범위가 겹쳐 시스템이 자동으로 검사기준을 정하지 못합니다. 발주처·KR 협의 결과에 따라 선택해 주세요.
+                        </div>
+                        <div class="choice-options">
+                            <div class="choice-card">
+                                <div class="c-title">FRP선 규칙 (2020)</div>
+                                <div class="c-desc">승인용 13종 + 참고용 4~5종</div>
+                            </div>
+                            <div class="choice-card">
+                                <div class="c-title">고속경구조선 규칙 (2017)</div>
+                                <div class="c-desc">승인용 14종(복원성자료 포함) + 참고용 5종</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="form-section">
+                <summary>참고 — 미확정 상태 예시 (재질 "혼합"인 경우) <span class="chevron">▸</span></summary>
+                <div class="form-body">
+                    <div class="judge-panel state-unresolved">
+                        <div class="judge-head"><span class="judge-dot"></span>미확정 — 해당 검사기준 없음</div>
+                        <div class="judge-body">
+                            아직 확인되지 않은 검사기준입니다. 서류 목록은 비워둔 채로 호선 등록을 진행할 수 있으며, 체크리스트는 이후 S03에서 해당 검사기준이 정의되면 자동으로 연결됩니다.
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <details class="form-section">
+                <summary>참고 — 선종 "여객용"·"외항선"인 경우도 동일하게 미확정 <span class="chevron">▸</span></summary>
+                <div class="form-body">
+                    <div class="judge-panel state-unresolved">
+                        <div class="judge-head"><span class="judge-dot"></span>미확정 — 검사기준 서류 목록 조사 전</div>
+                        <div class="judge-body">
+                            DK엠텍은 레저선박 외에 중형 선박까지 생산 가능하나, 여객용·외항선은 이번 실증 범위에서 검사기준 서류 목록이 아직 조사되지 않았습니다(여객용은 24종 수준으로 추정, 외항선은 다수로만 확인됨 — 실무자 미팅 기록). S03에 해당 검사기준이 등록되면 자동으로 연결됩니다.
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <div class="form-footer">
+                <button class="btn">취소</button>
+                <button class="btn primary">저장</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

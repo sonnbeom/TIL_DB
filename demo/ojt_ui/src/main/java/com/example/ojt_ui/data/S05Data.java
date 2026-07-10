@@ -9,7 +9,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-/** mockup_ui/test.html(S05 자산 검색)의 검색결과 마크업을 그대로 옮긴 정적 데이터 제공자. */
+
 public final class S05Data {
 
     public static final Map<String, String> ICONS;
