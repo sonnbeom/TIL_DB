@@ -1,0 +1,43 @@
+version: '3.8'
+
+# 샤드 0 (master-friend / slave-friend-1), 샤드 1 (master-friend-2 / slave-friend-2)
+# 주의: 여기서 slave는 진짜 MySQL Replication이 구성된 게 아닙니다.
+# "라우팅이 master/slave로 잘 갈리는지"를 눈으로 확인하기 위한 별도의 빈 DB일 뿐입니다.
+# 실제로는 master에 쓴 데이터가 slave에 복제되지 않는다는 점, 꼭 기억해두세요.
+
+services:
+  master-friend:        # shard 0 master
+    image: mysql:8.0
+    container_name: master-friend
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: friend
+    ports:
+      - "3307:3306"
+
+  slave-friend-1:        # shard 0 slave
+    image: mysql:8.0
+    container_name: slave-friend-1
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: friend
+    ports:
+      - "3308:3306"
+
+  master-friend-2:       # shard 1 master
+    image: mysql:8.0
+    container_name: master-friend-2
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: friend
+    ports:
+      - "3309:3306"
+
+  slave-friend-2:        # shard 1 slave
+    image: mysql:8.0
+    container_name: slave-friend-2
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: friend
+    ports:
+      - "3310:3306"
