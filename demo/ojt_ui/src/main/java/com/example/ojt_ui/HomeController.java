@@ -4,10 +4,12 @@ import com.example.ojt_ui.dto.S01Request;
 import com.example.ojt_ui.dto.S02Request;
 import com.example.ojt_ui.dto.S03Request;
 import com.example.ojt_ui.dto.S04Request;
+import com.example.ojt_ui.dto.S05Request;
 import com.example.ojt_ui.service.S01Service;
 import com.example.ojt_ui.service.S02Service;
 import com.example.ojt_ui.service.S03Service;
 import com.example.ojt_ui.service.S04Service;
+import com.example.ojt_ui.service.S05Service;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,12 +22,15 @@ public class HomeController {
     private final S02Service s02Service;
     private final S03Service s03Service;
     private final S04Service s04Service;
+    private final S05Service s05Service;
 
-    public HomeController(S01Service s01Service, S02Service s02Service, S03Service s03Service, S04Service s04Service) {
+    public HomeController(S01Service s01Service, S02Service s02Service, S03Service s03Service,
+                           S04Service s04Service, S05Service s05Service) {
         this.s01Service = s01Service;
         this.s02Service = s02Service;
         this.s03Service = s03Service;
         this.s04Service = s04Service;
+        this.s05Service = s05Service;
     }
 
     @GetMapping("/test")
@@ -55,6 +60,12 @@ public class HomeController {
     public String s04(@ModelAttribute S04Request request, Model model) {
         model.addAllAttributes(s04Service.buildModel(request));
         return "s04";
+    }
+
+    @GetMapping("/s05")
+    public String s05(@ModelAttribute S05Request request, Model model) {
+        model.addAllAttributes(s05Service.buildModel(request));
+        return "s05";
     }
 
 }

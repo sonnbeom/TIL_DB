@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>S05 · 자산 검색 — DK엠텍 AAS</title>
+    <link rel="stylesheet" th:href="@{/resources/css/fonts.css}" />
+    <link rel="stylesheet" th:href="@{/resources/css/app.css}" />
+</head>
+<body>
+
+<div class="app">
+    <nav th:replace="~{fragments/layout :: sidebar(active='s05')}"></nav>
+
+    <div class="main">
+        <div class="topbar">
+            <div class="topbar-left">
+                <div class="crumb">자산관리</div>
+                <h1>자산 검색</h1>
+            </div>
+        </div>
+
+        <form class="search-bar" method="get" th:action="@{/s05}">
+            <div class="search-input">
+                <svg class="icon-svg" width="15" height="15" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+                <input type="text" name="q" th:value="${query}" placeholder="자산명, 시리얼번호, 프로젝트 코드로 검색" />
+            </div>
+            <input type="hidden" name="type" th:value="${selectedType}" />
+            <button class="btn primary" type="submit">검색</button>
+        </form>
+
+        <div class="search-filters">
+            <a th:each="filter : ${typeFilters}"
+               class="chip" th:classappend="${filter.id == selectedType} ? 'selected' : ''"
+               th:href="@{/s05(type=${filter.id}, q=${query})}"
+               th:text="${filter.label}">유형</a>
+            <span class="chip" style="margin-left:auto; border-style:dashed;">＋ 속성 조건 추가</span>
+        </div>
+
+        <div class="result-meta">
+            <b th:text="${resultCount}">0</b>건 검색됨<th:block th:if="${!query.isEmpty()}"> · "<span th:text="${query}">검색어</span>" 포함</th:block>
+        </div>
+
+        <div class="data-table-wrap" th:if="${!results.isEmpty()}">
+            <div class="doc-table">
+                <div class="overflow-x">
+                    <table>
+                        <thead>
+                        <tr><th>자산</th><th>유형</th><th>위치</th><th>상태</th><th>최근 수정</th></tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="row : ${results}">
+                            <td>
+                                <div class="row-asset">
+                                    <span class="thumb"><svg class="icon-svg" width="16" height="16" viewBox="0 0 24 24" th:utext="${icons.get(row.icon)}"></svg></span>
+                                    <div><div class="rt" th:text="${row.name}">자산명</div><div class="rs" th:text="${row.sub}">부가정보</div></div>
+                                </div>
+                            </td>
+                            <td th:text="${row.category}">유형</td>
+                            <td th:text="${row.location}">위치</td>
+                            <td>
+                                <span th:if="${row.badgeStatus}" class="badge" th:classappend="${row.statusClass}" th:text="${row.statusLabel}">상태</span>
+                                <span th:unless="${row.badgeStatus}" class="ci-status" th:classappend="${row.statusClass}" th:text="${row.statusLabel}">상태</span>
+                            </td>
+                            <td class="doc-idx" style="width:auto;" th:text="${row.date}">날짜</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="empty-panel" style="margin-top:36px;" th:if="${results.isEmpty()}">
+            <svg class="icon-svg" width="26" height="26" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            <h3>검색 결과 없음</h3>
+            <p>조건에 맞는 자산이 없습니다. 검색어나 유형 필터를 바꿔 보세요.</p>
+        </div>
+    </div>
+</div>
+
+<button class="theme-toggle" onclick="document.documentElement.setAttribute('data-theme', document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark')">테마 전환</button>
+</body>
+</html>
