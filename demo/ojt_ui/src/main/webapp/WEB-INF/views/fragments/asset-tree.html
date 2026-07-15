@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="treeNode(n, selectedKey, icons)" class="tree-node" th:classappend="(${n.open} ? 'open' : '') + ' ' + (${n.leaf} ? 'leaf' : '')">
+    <a th:if="${n.clickable}" class="tree-row" th:classappend="${n.id == selectedKey} ? 'selected' : ''"
+       th:href="@{/s04(node=${n.id})}">
+        <span class="tree-toggle">
+            <svg th:if="${!n.leaf}" width="10" height="10" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2.4"><path d="M9 5l7 7-7 7"/></svg>
+        </span>
+        <svg th:if="${n.icon != null}" class="tree-icon icon-svg" width="14" height="14" viewBox="0 0 24 24" th:utext="${icons.get(n.icon)}"></svg>
+        <span class="tree-label" th:text="${n.label}">항목명</span>
+        <span class="tree-count" th:if="${n.count != null}" th:text="${n.count}">0</span>
+    </a>
+    <div th:unless="${n.clickable}" class="tree-row">
+        <span class="tree-toggle"></span>
+        <span class="tree-label" th:text="${n.label}">항목명</span>
+    </div>
+    <div class="tree-children" th:if="${n.hasChildren()}">
+        <th:block th:each="c : ${n.children}">
+            <div th:replace="~{this :: treeNode(${c}, ${selectedKey}, ${icons})}"></div>
+        </th:block>
+    </div>
+</div>
+
+</body>
+</html>

@@ -3,6 +3,8 @@ package com.example.ojt_ui;
 import com.example.ojt_ui.data.MasterData;
 import com.example.ojt_ui.data.S02Data;
 import com.example.ojt_ui.data.S03Data;
+import com.example.ojt_ui.data.S04Data;
+import com.example.ojt_ui.model.AssetDetail;
 import com.example.ojt_ui.model.Criteria;
 import com.example.ojt_ui.model.Selection;
 import com.example.ojt_ui.model.Submodel;
@@ -92,6 +94,18 @@ public class HomeController {
         }
 
         return "s03";
+    }
+
+    @GetMapping("/s04")
+    public String s04(@RequestParam(defaultValue = "welder3") String node, Model model) {
+        AssetDetail detail = S04Data.DETAILS.get(node);
+
+        model.addAttribute("tree", S04Data.TREE);
+        model.addAttribute("icons", S04Data.ICONS);
+        model.addAttribute("selectedKey", node);
+        model.addAttribute("detail", detail);
+
+        return "s04";
     }
 
 }
