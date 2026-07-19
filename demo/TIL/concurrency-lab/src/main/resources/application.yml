@@ -33,7 +33,7 @@ server:
       max: 300                    # 동시 요청 처리 스레드 수 - JMeter 동시 사용자 수에 맞춰 조정 필요
 
 enrollment:
-  strategy: idea1                 # idea1 | pessimistic | optimistic | distributed
+  strategy: pessimistic                 # idea1 | pessimistic | optimistic | distributed
 
 logging:
   level:

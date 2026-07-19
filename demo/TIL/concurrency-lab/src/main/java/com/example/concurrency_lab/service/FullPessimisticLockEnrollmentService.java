@@ -2,16 +2,14 @@ package com.example.concurrency_lab.service;
 
 import com.example.concurrency_lab.domain.Course;
 import com.example.concurrency_lab.domain.CourseTimeSlot;
+import com.example.concurrency_lab.domain.Enrollment;
 import com.example.concurrency_lab.domain.StudentScheduleSlot;
 import com.example.concurrency_lab.dto.EnrollmentRequest;
 import com.example.concurrency_lab.dto.EnrollmentResult;
 import com.example.concurrency_lab.exception.CapacityExceededException;
-import com.example.concurrency_lab.repository.CourseRepository;
-import com.example.concurrency_lab.repository.CourseTimeSlotRepository;
-import com.example.concurrency_lab.repository.StudentRepository;
-import com.example.concurrency_lab.repository.StudentScheduleSlotRepository;
+import com.example.concurrency_lab.repository.*;
 import com.example.concurrency_lab.validator.EnrollmentValidator;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +24,7 @@ public class FullPessimisticLockEnrollmentService implements EnrollmentService{
     private final EnrollmentValidator enrollmentValidator;
     private final CourseTimeSlotRepository courseTimeSlotRepository;
     private final StudentScheduleSlotRepository studentScheduleSlotRepository;
+    private final EnrollmentRepository enrollmentRepository;
 
     @Override
     @Transactional
@@ -35,12 +34,12 @@ public class FullPessimisticLockEnrollmentService implements EnrollmentService{
 
         try {
             // 1. Student 락
-            studentRepository.findById(studentId)
+            studentRepository.findByIdForUpdate(studentId)
                     .orElseThrow(() -> new IllegalArgumentException(
                             String.format("해당 id(%d)를 가진 학생을 찾을 수 없습니다.", studentId)
                     ));
             // 2. Course 락
-            Course course = courseRepository.findById(courseId)
+            Course course = courseRepository.findByIdForUpdate(courseId)
                     .orElseThrow(() -> new IllegalArgumentException(
                             String.format("해당 id(%d)를 가진 강의를 찾을 수 없습니다.", courseId)
                     ));
@@ -57,6 +56,13 @@ public class FullPessimisticLockEnrollmentService implements EnrollmentService{
 
             course.setEnrolled(course.getEnrolled() + 1);
 
+
+            enrollmentRepository.save(
+                    Enrollment.builder()
+                            .studentId(studentId)
+                            .courseId(courseId)
+                            .build()
+            );
             List<CourseTimeSlot> slots = courseTimeSlotRepository.findByCourseId(courseId);
             for (CourseTimeSlot courseTimeSlot: slots){
                 studentScheduleSlotRepository.save(
