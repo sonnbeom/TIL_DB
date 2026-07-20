@@ -1,21 +1,55 @@
+server:
+  port: 8080
+
 spring:
+  application:
+    name: cache-aside-demo
+
   datasource:
-    url: jdbc:mysql://localhost:3306/cacheaside?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-    username: app
-    password: app1234
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/cacheaside?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true
+    username: ${DB_USERNAME:app}
+    password: ${DB_PASSWORD:app1234}
     driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
 
   jpa:
     hibernate:
       ddl-auto: none
     open-in-view: false
+    show-sql: false
+
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+      # 컨테이너 재기동 시 이미 있는 테이블/인덱스라 "duplicate" 에러가 나도
+      # 앱 기동 자체는 막지 않도록 함
+      continue-on-error: true
 
   data:
     redis:
-      host: localhost
-      port: 6379
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      timeout: 3000ms
 
 mybatis:
   mapper-locations: classpath:mapper/**/*.xml
   configuration:
     map-underscore-to-camel-case: true
+
+app:
+  cache:
+    # Before: false (MySQL + 인덱스만) / After: true (MySQL + 인덱스 + Redis Cache-Aside)
+    enabled: ${APP_CACHE_ENABLED:true}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics
+
+logging:
+  level:
+    com.example.cahsetest: INFO
