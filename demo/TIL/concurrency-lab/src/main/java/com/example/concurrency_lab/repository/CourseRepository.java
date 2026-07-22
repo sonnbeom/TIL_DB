@@ -1,5 +1,7 @@
 package com.example.concurrency_lab.repository;
 
+import com.example.concurrency_lab.domain.Course;
+
 public interface CourseRepository extends JpaRepository<Course, Long> {
 
     // 후보1(무지성 비관적 락)용 - Course도 SELECT FOR UPDATE로 잠금
