@@ -19,13 +19,22 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
 
     // 아이디어1용 - 조건부 원자적 UPDATE (짧은 락)
     @Modifying
-    @Query("UPDATE Course c SET c.enrolled = c.enrolled + 1 WHERE c.id = :id AND c.enrolled < c.capacity")
+    @Query(value = """
+        UPDATE course SET enrolled = enrolled + 1 
+        WHERE id = :id 
+        AND enrolled < capacity
+    """, nativeQuery = true)
     int enrollIfAvailable(@Param("id") Long id);
 
     // 후보2(낙관적 락)용 - version 기반 CAS
     @Modifying
-    @Query("UPDATE Course c SET c.enrolled = c.enrolled + 1, c.version = c.version + 1 " +
-            "WHERE c.id = :id AND c.version = :version AND c.enrolled < c.capacity")
+    @Query(value = """
+        UPDATE course SET enrolled = enrolled + 1,
+                              version = version + 1 
+        WHERE id = :id 
+              AND version =:version 
+              AND enrolled < capacity
+    """, nativeQuery = true)
     int enrollWithVersionCheck(@Param("id") Long id, @Param("version") Long version);
 
     // 후보2용 - 재시도 시 최신 값 재조회 (락 없이 그냥 조회)
