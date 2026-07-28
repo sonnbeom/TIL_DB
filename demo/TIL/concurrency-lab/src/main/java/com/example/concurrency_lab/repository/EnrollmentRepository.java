@@ -15,8 +15,21 @@ public interface EnrollmentRepository extends JpaRepository<Enrollment, Long> {
     // 조건1(18학점 계산)용 - 학생의 신청 강의 목록 조회
     List<Enrollment> findByStudentId(Long studentId);
 
-    @Query("SELECT COALESCE(SUM(c.credit), 0) FROM Enrollment e " +
-            "JOIN Course c ON e.courseId = c.id " +
-            "WHERE e.studentId = :studentId")
-    Integer sumCreditByStudentId(@Param("studentId") Long studentId);
+//    @Query("SELECT COALESCE(SUM(c.credit), 0) FROM Enrollment e " +
+//            "JOIN Course c ON e.courseId = c.id " +
+//            "WHERE e.studentId = :studentId")
+//    Integer sumCreditByStudentId(@Param("studentId") Long studentId);
+
+
+    @Query(
+            value = """
+                SELECT COALESCE(SUM(c.credit, 0))
+                FROM enrollment e
+                JOIN course c ON e.course_id = c.id
+                WHERE e.student_id = :studentId
+                """,
+            nativeQuery = true
+    )
+    Integer sumCreditsByStudentId(@Param("studentId") long studentId);
+
 }

@@ -4,6 +4,8 @@ import com.example.concurrency_lab.domain.Course;
 import com.example.concurrency_lab.domain.CourseTimeSlot;
 import com.example.concurrency_lab.domain.Enrollment;
 import com.example.concurrency_lab.exception.CreditLimitExceededException;
+import com.example.concurrency_lab.exception.DuplicateEnrollmentException;
+import com.example.concurrency_lab.exception.TimeConflictException;
 import com.example.concurrency_lab.repository.CourseRepository;
 import com.example.concurrency_lab.repository.CourseTimeSlotRepository;
 import com.example.concurrency_lab.repository.EnrollmentRepository;
