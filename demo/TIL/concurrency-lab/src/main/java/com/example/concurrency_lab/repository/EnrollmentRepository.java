@@ -30,6 +30,5 @@ public interface EnrollmentRepository extends JpaRepository<Enrollment, Long> {
                 """,
             nativeQuery = true
     )
-    Integer sumCreditsByStudentId(@Param("studentId") long studentId);
-
+    Integer sumCreditByStudentId(@Param("studentId") long studentId);
 }

@@ -39,14 +39,38 @@ public class OptimisticLockEnrollmentService implements EnrollmentService{
         try {
             for (int attempt = 1; attempt <= MAX_RETRY ; attempt++) {
                 boolean success = tryEnrollOnce(studentId, courseId);
+                if (success) {
+                    return EnrollmentResult.builder()
+                            .message("수강신청이 완료되었습니다.")
+                            .success(true)
+                            .build();
+                }
+                sleepWithBackoff(attempt);
 
             }
+        }
+        catch (RuntimeException e){
+            return EnrollmentResult.builder()
+                    .success(false)
+                    .message("재시도를 모두 실행했지만 실패했습니다.")
+                    .build();
         }
         return null;
     }
 
+    private void sleepWithBackoff(int attempt) {
+        try {
+            long jitter = (long) (Math.random() * 10);
+            long delay = BASE_BACKOFF_MS * attempt + jitter;
+            Thread.sleep(delay);
+        }
+        catch (InterruptedException e){
+            Thread.currentThread().interrupt();
+        }
+    }
+
     @Transactional
-    private boolean tryEnrollOnce(Long studentId, Long courseId) {
+    public boolean tryEnrollOnce(Long studentId, Long courseId) {
 
         Course course = courseRepository.findById(courseId)
                 .orElseThrow(() -> new IllegalArgumentException(
@@ -81,7 +105,7 @@ public class OptimisticLockEnrollmentService implements EnrollmentService{
                             .timeSlotId(slot.getTimeSlotId())
                             .build()
             );
-
         }
+        return true;
     }
 }
