@@ -1,5 +1,7 @@
 package com.example.log_server.config;
 
+import com.example.log_server.handler.SensorMessageHandler;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -54,8 +56,10 @@ public class MqttConfig {
     }
 
     @Bean
+    // 채널 설정 코드 mqttInputChannel 채널을 구독하겠다
     @ServiceActivator(inputChannel = "mqttInputChannel")
-    public MessageHandler handler(com.example.sensormqtt.service.SensorMessageHandler sensorMessageHandler) {
+    // Spring이 SensorMessageHandler 타입의 빈을 찾아서 DI
+    public MessageHandler handler(SensorMessageHandler sensorMessageHandler) {
         return sensorMessageHandler::handleMessage;
     }
 }

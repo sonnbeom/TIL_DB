@@ -22,6 +22,8 @@ dependencies {
     // Spring Integration MQTT
     implementation 'org.springframework.boot:spring-boot-starter-integration'
     implementation 'org.springframework.integration:spring-integration-mqtt'
+    // Spring Integration 6.5+ 부터 optional 의존성이라 명시적으로 추가 필요
+    implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5'
 
     // MongoDB
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
