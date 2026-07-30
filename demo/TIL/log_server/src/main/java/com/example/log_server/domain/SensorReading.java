@@ -8,13 +8,19 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.Instant;
+import java.util.Map;
 
 /**
- * MVP 단계 스키마.
- * - deviceTimestamp: 센서가 찍은 시각 (센서 시계 오차 이슈 대비, 추후 반영 예정)
- * - receivedAt: 서버가 메시지를 받은 시각
- * 지금은 receivedAt만 채우고, deviceTimestamp는 payload에 필드가 오면 채우도록
- * 다음 단계에서 확장할 예정.
+ * 공통 envelope + 타입별 유동적인 data 필드로 확장 가능한 스키마.
+ *
+ * sensorType 예: "temperature", "humidity", "power", "safety"
+ * data 예:
+ *   temperature -> { value: 23.5, unit: "celsius" }
+ *   power       -> { voltage: 220, current: 5.2, power: 1144 }
+ *   safety      -> {} (아직 필드 미정, 나중에 채움)
+ *
+ * DB 전략(단일 컬렉션 vs 분리)은 나중에 결정. 지금은 data를 Map으로 받아
+ * 어떤 저장소로 바뀌어도 파싱 로직 자체는 재사용 가능하게 설계.
  */
 @Data
 @Builder
@@ -26,9 +32,18 @@ public class SensorReading {
     @Id
     private String id;
 
+    private Integer schemaVersion;
+
+    private String sensorType;
+
     private String deviceId;
 
-    private Double value;
+    /** 센서가 실제로 측정한 시각 (payload의 timestamp) */
+    private Instant deviceTimestamp;
 
+    /** 서버가 메시지를 수신한 시각 */
     private Instant receivedAt;
+
+    /** 타입별로 구조가 다른 유동 필드 */
+    private Map<String, Object> data;
 }

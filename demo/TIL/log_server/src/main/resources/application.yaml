@@ -8,5 +8,5 @@ spring:
 mqtt:
   broker-url: tcp://localhost:1883
   client-id: sensor-consumer-1
-  topic-filter: "sensor/+/data"   # sensor/{device_id}/data
+  topic-filter: "sensor/+/+/data"   # sensor/{sensorType}/{deviceId}/data
   qos: 1
