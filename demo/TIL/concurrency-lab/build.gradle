@@ -28,7 +28,6 @@ dependencies {
 
 	// 후보3(분산 락)용 Redis
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-	// Redisson을 쓰면 분산 락(RLock)을 직접 구현 안 해도 되어 편리함 (선택)
 
 	// Lombok
 	compileOnly 'org.projectlombok:lombok'

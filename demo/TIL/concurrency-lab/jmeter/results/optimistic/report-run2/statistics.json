@@ -1,0 +1,34 @@
+{
+  "Total" : {
+    "transaction" : "Total",
+    "sampleCount" : 200,
+    "errorCount" : 198,
+    "errorPct" : 99.0,
+    "meanResTime" : 4868.08,
+    "medianResTime" : 5378.5,
+    "minResTime" : 58.0,
+    "maxResTime" : 5961.0,
+    "pct1ResTime" : 5754.1,
+    "pct2ResTime" : 5803.6,
+    "pct3ResTime" : 5833.98,
+    "throughput" : 32.91097581043278,
+    "receivedKBytesPerSec" : 18.01297412374527,
+    "sentKBytesPerSec" : 6.828384688168504
+  },
+  "POST /api/enroll" : {
+    "transaction" : "POST /api/enroll",
+    "sampleCount" : 200,
+    "errorCount" : 198,
+    "errorPct" : 99.0,
+    "meanResTime" : 4868.08,
+    "medianResTime" : 5378.5,
+    "minResTime" : 58.0,
+    "maxResTime" : 5961.0,
+    "pct1ResTime" : 5754.1,
+    "pct2ResTime" : 5803.6,
+    "pct3ResTime" : 5833.98,
+    "throughput" : 32.91097581043278,
+    "receivedKBytesPerSec" : 18.01297412374527,
+    "sentKBytesPerSec" : 6.828384688168504
+  }
+}

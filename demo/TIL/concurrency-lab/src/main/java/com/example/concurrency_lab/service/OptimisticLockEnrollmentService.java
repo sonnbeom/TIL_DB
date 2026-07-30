@@ -32,7 +32,6 @@ public class OptimisticLockEnrollmentService implements EnrollmentService{
     private final StudentScheduleSlotRepository studentScheduleSlotRepository;
 
     @Override
-    @Transactional
     public EnrollmentResult enroll(EnrollmentRequest enrollmentRequest) {
         Long studentId = enrollmentRequest.getStudentId();
         Long courseId = enrollmentRequest.getCourseId();
@@ -53,10 +52,13 @@ public class OptimisticLockEnrollmentService implements EnrollmentService{
         catch (RuntimeException e){
             return EnrollmentResult.builder()
                     .success(false)
-                    .message("재시도를 모두 실행했지만 실패했습니다.")
+                    .message(e.getMessage())
                     .build();
         }
-        return null;
+        return EnrollmentResult.builder()
+                .success(false)
+                .message("재시도 횟수를 초과했습니다. 잠시 후 다시 시도해주세요.")
+                .build();
     }
 
     private void sleepWithBackoff(int attempt) {
