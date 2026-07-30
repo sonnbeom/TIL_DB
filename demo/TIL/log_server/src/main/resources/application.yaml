@@ -1,0 +1,12 @@
+server:
+  port: 8080
+
+spring:
+  mongodb:
+    uri: mongodb://localhost:27017/sensordb
+
+mqtt:
+  broker-url: tcp://localhost:1883
+  client-id: sensor-consumer-1
+  topic-filter: "sensor/+/data"   # sensor/{device_id}/data
+  qos: 1
