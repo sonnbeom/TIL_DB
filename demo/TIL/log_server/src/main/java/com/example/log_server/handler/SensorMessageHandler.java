@@ -29,7 +29,7 @@ import java.util.Map;
  * (topic은 라우팅/구독 필터링용, payload는 실제 데이터 검증용)
  *
  * 아직 반영 안 한 것 (다음 단계 예정):
- * - 파싱 실패 시 dead-letter 처리
+ * - 파싱 실패 시 dead-letter 처리0
  * - 중복 수신(QoS1) 멱등성 처리
  */
 @Slf4j
