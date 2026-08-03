@@ -1,4 +1,4 @@
-package com.example.log_server.domain;
+package com.example.log_server.sensor.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

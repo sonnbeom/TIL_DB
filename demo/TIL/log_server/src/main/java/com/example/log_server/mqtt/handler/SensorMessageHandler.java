@@ -1,7 +1,7 @@
-package com.example.log_server.handler;
+package com.example.log_server.mqtt.handler;
 
-import com.example.log_server.domain.SensorReading;
-import com.example.log_server.repository.SensorReadingRepository;
+import com.example.log_server.sensor.domain.SensorReading;
+import com.example.log_server.sensor.repository.SensorReadingRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.integration.mqtt.support.MqttHeaders;

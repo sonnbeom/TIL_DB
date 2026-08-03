@@ -1,6 +1,6 @@
-package com.example.log_server.config;
+package com.example.log_server.mqtt.config;
 
-import com.example.log_server.handler.SensorMessageHandler;
+import com.example.log_server.mqtt.handler.SensorMessageHandler;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
