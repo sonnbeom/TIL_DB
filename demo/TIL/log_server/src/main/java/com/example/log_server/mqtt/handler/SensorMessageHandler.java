@@ -1,5 +1,6 @@
 package com.example.log_server.mqtt.handler;
 
+import com.example.log_server.sensor.buffer.SensorReadingBuffer;
 import com.example.log_server.sensor.domain.SensorReading;
 import com.example.log_server.sensor.repository.SensorReadingRepository;
 import lombok.RequiredArgsConstructor;
@@ -37,7 +38,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class SensorMessageHandler {
 
-    private final SensorReadingRepository repository;
+    private final SensorReadingBuffer buffer;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @SuppressWarnings("unchecked")
@@ -69,7 +70,9 @@ public class SensorMessageHandler {
                     .data(data)
                     .build();
 
-            repository.save(reading);
+//            repository.save(reading);
+            buffer.offer(reading);
+            buffer.flushFull();
             log.info("Saved reading: topic={}, sensorType={}, deviceId={}, data={}",
                     topic, sensorType, deviceId, data);
 
