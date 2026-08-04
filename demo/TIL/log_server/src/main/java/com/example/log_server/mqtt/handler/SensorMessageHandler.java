@@ -3,6 +3,7 @@ package com.example.log_server.mqtt.handler;
 import com.example.log_server.sensor.buffer.SensorReadingBuffer;
 import com.example.log_server.sensor.domain.SensorReading;
 import com.example.log_server.sensor.repository.SensorReadingRepository;
+import com.example.log_server.sensor.sink.SensorReadingSink;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.integration.mqtt.support.MqttHeaders;
@@ -38,7 +39,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class SensorMessageHandler {
 
-    private final SensorReadingBuffer buffer;
+    private final SensorReadingSink sink;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @SuppressWarnings("unchecked")
@@ -70,9 +71,7 @@ public class SensorMessageHandler {
                     .data(data)
                     .build();
 
-//            repository.save(reading);
-            buffer.offer(reading);
-            buffer.flushFull();
+            sink.accept(reading);
             log.info("Saved reading: topic={}, sensorType={}, deviceId={}, data={}",
                     topic, sensorType, deviceId, data);
 
@@ -81,4 +80,5 @@ public class SensorMessageHandler {
             log.error("Failed to handle message: {}", message, e);
         }
     }
+
 }

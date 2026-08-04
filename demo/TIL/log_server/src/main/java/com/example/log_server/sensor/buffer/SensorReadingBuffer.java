@@ -4,6 +4,7 @@ import com.example.log_server.sensor.domain.SensorReading;
 import com.example.log_server.sensor.writer.SensorReadingWriter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -17,6 +18,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Slf4j
 @Component
 @RequiredArgsConstructor
+@Profile("queued")
 public class SensorReadingBuffer {
 
     private final SensorReadingWriter writer;

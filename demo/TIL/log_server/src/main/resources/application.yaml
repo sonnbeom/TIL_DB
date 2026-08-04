@@ -2,6 +2,8 @@ server:
   port: 8080
 
 spring:
+  profiles:
+    active: queued
   mongodb:
     uri: mongodb://localhost:27017/sensordb
 
