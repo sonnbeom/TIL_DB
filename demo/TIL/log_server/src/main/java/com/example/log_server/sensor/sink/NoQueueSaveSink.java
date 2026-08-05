@@ -15,6 +15,11 @@ public class NoQueueSaveSink implements SensorReadingSink {
 
     @Override
     public void accept(SensorReading reading) {
-        repository.save(reading);
+        try {
+            Thread.sleep(5);
+            repository.save(reading);
+        } catch (InterruptedException e){
+            Thread.currentThread().interrupt();
+        }
     }
 }

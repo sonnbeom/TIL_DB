@@ -16,6 +16,11 @@ public class SensorReadingWriter {
 
     public void writeBatch(List<SensorReading> sensorReadings){
         if (sensorReadings.isEmpty()) return;
+        try {
+            Thread.sleep(5);
+        } catch (InterruptedException e){
+            Thread.currentThread().interrupt();
+        }
         mongoTemplate.insert(sensorReadings, SensorReading.class);
     }
 

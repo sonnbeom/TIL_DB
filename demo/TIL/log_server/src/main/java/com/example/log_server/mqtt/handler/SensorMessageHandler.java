@@ -4,6 +4,7 @@ import com.example.log_server.sensor.buffer.SensorReadingBuffer;
 import com.example.log_server.sensor.domain.SensorReading;
 import com.example.log_server.sensor.repository.SensorReadingRepository;
 import com.example.log_server.sensor.sink.SensorReadingSink;
+import com.example.log_server.sensor.validation.service.SensorValidationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.integration.mqtt.support.MqttHeaders;
@@ -40,6 +41,7 @@ import java.util.Map;
 public class SensorMessageHandler {
 
     private final SensorReadingSink sink;
+    private final SensorValidationService validationService;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @SuppressWarnings("unchecked")
@@ -62,6 +64,20 @@ public class SensorMessageHandler {
                     ? objectMapper.convertValue(json.get("data"), Map.class)
                     : new HashMap<>();
 
+            // 1. 유효성 검증
+            if (!validationService.isValid(sensorType, data)) {
+                log.warn("Invalid reading, skipped: deviceId={}, sensorType={}, data={}", deviceId, sensorType, data);
+                return;
+            }
+
+            // 2. 이상치 탐지 (Redis I/O 발생 지점)
+            boolean anomaly = validationService.isAnomaly(deviceId, sensorType, data);
+            if (anomaly) {
+                // TODO: 실제 알람 발송 로직 (지금은 로그만)
+                log.warn("ALERT: anomaly detected for deviceId={}", deviceId);
+            }
+
+
             SensorReading reading = SensorReading.builder()
                     .schemaVersion(schemaVersion)
                     .sensorType(sensorType)
@@ -72,6 +88,7 @@ public class SensorMessageHandler {
                     .build();
 
             sink.accept(reading);
+
             log.info("Saved reading: topic={}, sensorType={}, deviceId={}, data={}",
                     topic, sensorType, deviceId, data);
 
