@@ -73,7 +73,11 @@ public class SensorMessageHandler {
             // 2. 이상치 탐지 (Redis I/O 발생 지점)
             boolean anomaly = validationService.isAnomaly(deviceId, sensorType, data);
             if (anomaly) {
-                // TODO: 실제 알람 발송 로직 (지금은 로그만)
+                try {
+                    Thread.sleep(5); // 외부 알람 API 호출 흉내
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
                 log.warn("ALERT: anomaly detected for deviceId={}", deviceId);
             }
 

@@ -19,7 +19,7 @@ mqtt:
 
 logging:
   level:
-    org.eclipse.paho: DEBUG
-    org.springframework.integration.mqtt: DEBUG
+    org.eclipse.paho: WARN
+    org.springframework.integration.mqtt: WARN
   file:
     name: logs/sensor-server.log

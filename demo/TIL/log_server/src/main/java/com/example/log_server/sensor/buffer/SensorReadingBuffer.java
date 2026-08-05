@@ -26,6 +26,8 @@ public class SensorReadingBuffer {
     // flush: 버퍼(임시 저장 공간)에 쌓여있던 데이터를 최종 목적지(현재는 DB)에 밀어내는 동작
     private static final int BATCH_SIZE = 200;
 
+    private final AtomicInteger maxBufferSizeSeen = new AtomicInteger(0);
+
     private final BlockingQueue<SensorReading> buffer = new LinkedBlockingQueue<>();
     // 큐가 꽉 차서(bounded로 바꿨을 때) 못 넣고 버린 개수 카운트
     private final AtomicInteger droppedCount = new AtomicInteger(0);
@@ -34,7 +36,10 @@ public class SensorReadingBuffer {
         // 데이터를 큐에 넣으려고 시도
         // 넣기 성공 -> true 큐 꽉 차서 못 넣음 false
         boolean accepted = buffer.offer(sensorReading);
-        if (!accepted) {
+        if (accepted) {
+            // 현재 크기가 지금까지의 최대값보다 크면 갱신
+            maxBufferSizeSeen.updateAndGet(prev -> Math.max(prev, buffer.size()));
+        } else {
             droppedCount.incrementAndGet();
             log.warn("Buffer full, dropping reading: deviceId={}", sensorReading.getDeviceId());
         }
@@ -59,6 +64,13 @@ public class SensorReadingBuffer {
         }
     }
 
+    // 1초마다 현재 상태를 로그로 남김 (시간에 따른 변화 추적용)
+    @Scheduled(fixedDelay = 1000)
+    public void logBufferStatus() {
+        log.info("Buffer status: currentSize={}, maxSizeSeen={}, dropped={}",
+                buffer.size(), maxBufferSizeSeen.get(), droppedCount.get());
+    }
+
     @Scheduled(fixedDelay = 500)
     public void flushByTime(){
         flush();
@@ -80,6 +92,10 @@ public class SensorReadingBuffer {
     /** 모니터링용: 지금까지 몇 개 버려졌는지 */
     public int getDroppedCount() {
         return droppedCount.get();
+    }
+
+    public int getMaxBufferSizeSeen() {
+        return maxBufferSizeSeen.get();
     }
 
 }
