@@ -3,7 +3,7 @@ server:
 
 spring:
   profiles:
-    active: no-queue
+    active: queued
   mongodb:
     uri: mongodb://localhost:27017/sensordb
   data:
