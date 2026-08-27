@@ -1,0 +1,39 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '4.1.1'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// OpenSearch 자바 클라이언트 (저수준, JPA 아님)
+	implementation 'org.opensearch.client:opensearch-java:2.11.1'
+
+	implementation 'org.apache.httpcomponents.client5:httpclient5:5.2.1'
+	implementation 'org.apache.httpcomponents.core5:httpcore5-h2:5.2.4'
+	implementation 'org.apache.httpcomponents.core5:httpcore5:5.2.4'
+
+	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+	testCompileOnly 'org.projectlombok:lombok'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
