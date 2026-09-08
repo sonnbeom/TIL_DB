@@ -1,17 +1,21 @@
-package com.example.log_server.config;
+package com.example.log_server.mqtt.config;
 
-import com.example.log_server.handler.SensorMessageHandler;
+import com.example.log_server.mqtt.handler.SensorMessageHandler;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.channel.DirectChannel;
+import org.springframework.integration.channel.ExecutorChannel;
 import org.springframework.integration.mqtt.core.DefaultMqttPahoClientFactory;
 import org.springframework.integration.mqtt.core.MqttPahoClientFactory;
 import org.springframework.integration.mqtt.inbound.MqttPahoMessageDrivenChannelAdapter;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHandler;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+
+import java.util.concurrent.ThreadPoolExecutor;
 
 @Configuration
 public class MqttConfig {
@@ -32,31 +36,25 @@ public class MqttConfig {
         DefaultMqttPahoClientFactory factory = new DefaultMqttPahoClientFactory();
         MqttConnectOptions options = new MqttConnectOptions();
         options.setServerURIs(new String[]{brokerUrl});
-        options.setCleanSession(true); // TODO: persistent session 검토 (네트워크 단절 처리 항목에서 false로 전환 예정)
+        options.setCleanSession(true);
         options.setAutomaticReconnect(true);
         factory.setConnectionOptions(options);
         return factory;
     }
 
-    @Bean
-    public MessageChannel mqttInputChannel() {
-        return new DirectChannel();
-        // TODO: 트래픽 늘어나면 ExecutorChannel로 교체해서 컨슈머 스레드 블로킹 방지 (서버쪽 부하 항목)
-    }
 
     @Bean
-    public MqttPahoMessageDrivenChannelAdapter mqttInbound() {
+    public MqttPahoMessageDrivenChannelAdapter mqttInbound(MessageChannel mqttInputChannel) {
         MqttPahoMessageDrivenChannelAdapter adapter =
-                new MqttPahoMessageDrivenChannelAdapter(
-                        clientId, mqttClientFactory(), topicFilter);
+                new MqttPahoMessageDrivenChannelAdapter(clientId, mqttClientFactory(), topicFilter);
         adapter.setCompletionTimeout(5000);
         adapter.setQos(qos);
-        adapter.setOutputChannel(mqttInputChannel());
+        adapter.setOutputChannel(mqttInputChannel);
         return adapter;
     }
 
     @Bean
-    // 채널 설정 코드 mqttInputChannel 채널을 구독하겠다
+    // 채널 설정 코드 mqttInputChannel 채널을 구독하겠다 메시지가 도착했을 때 실제로 뭘 할지 여기서는 handleMessage를 실행하겠다 선언
     @ServiceActivator(inputChannel = "mqttInputChannel")
     // Spring이 SensorMessageHandler 타입의 빈을 찾아서 DI
     public MessageHandler handler(SensorMessageHandler sensorMessageHandler) {

@@ -1,7 +1,10 @@
-package com.example.log_server.handler;
+package com.example.log_server.mqtt.handler;
 
-import com.example.log_server.domain.SensorReading;
-import com.example.log_server.repository.SensorReadingRepository;
+import com.example.log_server.sensor.buffer.SensorReadingBuffer;
+import com.example.log_server.sensor.domain.SensorReading;
+import com.example.log_server.sensor.repository.SensorReadingRepository;
+import com.example.log_server.sensor.sink.SensorReadingSink;
+import com.example.log_server.sensor.validation.service.SensorValidationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.integration.mqtt.support.MqttHeaders;
@@ -37,7 +40,8 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class SensorMessageHandler {
 
-    private final SensorReadingRepository repository;
+    private final SensorReadingSink sink;
+    private final SensorValidationService validationService;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @SuppressWarnings("unchecked")
@@ -60,6 +64,24 @@ public class SensorMessageHandler {
                     ? objectMapper.convertValue(json.get("data"), Map.class)
                     : new HashMap<>();
 
+            // 1. 유효성 검증
+            if (!validationService.isValid(sensorType, data)) {
+                log.warn("Invalid reading, skipped: deviceId={}, sensorType={}, data={}", deviceId, sensorType, data);
+                return;
+            }
+
+            // 2. 이상치 탐지 (Redis I/O 발생 지점)
+            boolean anomaly = validationService.isAnomaly(deviceId, sensorType, data);
+            if (anomaly) {
+                try {
+                    Thread.sleep(5); // 외부 알람 API 호출 흉내
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+                log.warn("ALERT: anomaly detected for deviceId={}", deviceId);
+            }
+
+
             SensorReading reading = SensorReading.builder()
                     .schemaVersion(schemaVersion)
                     .sensorType(sensorType)
@@ -69,7 +91,8 @@ public class SensorMessageHandler {
                     .data(data)
                     .build();
 
-            repository.save(reading);
+            sink.accept(reading);
+
             log.info("Saved reading: topic={}, sensorType={}, deviceId={}, data={}",
                     topic, sensorType, deviceId, data);
 
@@ -78,4 +101,5 @@ public class SensorMessageHandler {
             log.error("Failed to handle message: {}", message, e);
         }
     }
+
 }
