@@ -43,5 +43,6 @@ Thread thread2 = new Thread(() -> {
 });
         thread1.start();
         thread2.start();
+        System.out.println("메인 스레드 종료");
     }
 }
