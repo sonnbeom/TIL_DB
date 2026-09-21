@@ -1,3 +1,6 @@
 spring:
   application:
     name: study-jvm
+
+server:
+  port: 8081
