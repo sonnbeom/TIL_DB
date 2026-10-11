@@ -13,6 +13,9 @@ java {
 	}
 }
 
+// Spring Boot의 dependency management가 관리하는 junit-jupiter 버전을 오버라이드
+ext['junit-jupiter.version'] = '5.13.4'
+
 repositories {
 	mavenCentral()
 }

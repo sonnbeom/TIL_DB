@@ -1,4 +1,4 @@
-package com.example.study_jvm.sychronized;
+package com.example.study_jvm.concurrency.sychronized;
 
 public class SynchronizedTest {
     private static int count = 0;

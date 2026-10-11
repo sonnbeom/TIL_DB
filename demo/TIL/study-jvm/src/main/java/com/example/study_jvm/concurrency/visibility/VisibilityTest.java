@@ -1,4 +1,4 @@
-package com.example.study_jvm.visibility;
+package com.example.study_jvm.concurrency.visibility;
 
 public class VisibilityTest {
 

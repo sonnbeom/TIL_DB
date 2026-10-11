@@ -1,4 +1,4 @@
-package com.example.study_jvm.deadlock;
+package com.example.study_jvm.concurrency.deadlock;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.params.SetParams;

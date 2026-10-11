@@ -1,4 +1,4 @@
-package com.example.study_jvm.safelocktest;
+package com.example.study_jvm.concurrency.safelocktest;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.params.SetParams;

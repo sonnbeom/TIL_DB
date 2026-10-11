@@ -1,4 +1,4 @@
-package com.example.study_jvm.atomicity;
+package com.example.study_jvm.concurrency.atomicity;
 
 public class AtomicityTest {
     private static volatile int count = 0; // volatile을 붙여도 원자성 문제가 그대로 재현되는지 보기 위함

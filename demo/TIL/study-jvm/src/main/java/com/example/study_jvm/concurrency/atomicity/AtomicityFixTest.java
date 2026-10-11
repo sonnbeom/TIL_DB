@@ -1,4 +1,4 @@
-package com.example.study_jvm.atomicity;
+package com.example.study_jvm.concurrency.atomicity;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

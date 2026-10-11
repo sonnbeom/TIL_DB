@@ -1,4 +1,4 @@
-package com.example.study_jvm.deadlock;
+package com.example.study_jvm.concurrency.deadlock;
 
 import java.util.concurrent.CountDownLatch;
 

@@ -1,4 +1,4 @@
-package com.example.study_jvm.watchdog;
+package com.example.study_jvm.concurrency.watchdog;
 
 import org.redisson.Redisson;
 import org.redisson.api.RLock;
