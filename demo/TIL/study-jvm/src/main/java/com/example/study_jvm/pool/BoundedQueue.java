@@ -47,7 +47,7 @@ public class BoundedQueue<T> {
     public T take() throws InterruptedException{
         lock.lockInterruptibly();
         try {
-            while (size == 0){
+            while (size == 0){ //size는 지금 큐 안에 들어 있는 원소의 갯수, 큐가 비었다 = 꺼낼 게 없다
                 notEmpty.await();
             }
             return dequeue();
