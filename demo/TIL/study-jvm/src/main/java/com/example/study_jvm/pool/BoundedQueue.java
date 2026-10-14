@@ -21,6 +21,7 @@ public class BoundedQueue<T> {
             while (size == items.length){
                 notFull.await();
             }
+            enqueue(t);
         }
         finally {
             lock.unlock();
@@ -86,4 +87,5 @@ public class BoundedQueue<T> {
         size++;
         notEmpty.signal();
     }
+
 }
