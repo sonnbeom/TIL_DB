@@ -30,4 +30,39 @@ public class Account {
         balance -= amount;
     }
 
+    // [3] throws만 있음: 내가 throw한 건 없고, 호출한 withdraw()의 예외를 그냥 위로 넘김
+    public void transfer(Account to, int amount) throws InsufficientFundsException {
+        withdraw(amount);   // 여기서 터지면 처리 안 하고 호출자에게 전달
+        to.deposit(amount);
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public static void main(String[] args) {
+        Account a = new Account(1000);
+        Account b = new Account(0);
+
+        // [1] try-catch 없어도 컴파일됨 (실행 시 터질 수는 있음)
+        a.deposit(500);
+
+        // [2] checked 예외라서 try-catch가 없으면 컴파일 에러
+        try {
+            a.withdraw(5000);
+        } catch (InsufficientFundsException e) {
+            System.out.println("출금 실패: " + e.getMessage());
+        }
+
+        // [3] transfer도 throws를 달고 있어서 똑같이 처리해야 함
+        try {
+            a.transfer(b, 9999);
+        } catch (InsufficientFundsException e) {
+            System.out.println("이체 실패: " + e.getMessage());
+        }
+
+        System.out.println("a 잔액: " + a.getBalance());   // 1500
+        System.out.println("b 잔액: " + b.getBalance());   // 0
+    }
+
 }
