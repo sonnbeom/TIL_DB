@@ -1,5 +1,6 @@
 package com.example.study_jvm.pool;
 
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -44,7 +45,6 @@ public class BoundedQueue<T> {
     }
 
     /** 비어 있으면 들어올 때까지 대기 */
-
     public T take() throws InterruptedException{
         lock.lockInterruptibly();
         try {
@@ -88,4 +88,20 @@ public class BoundedQueue<T> {
         notEmpty.signal();
     }
 
+
+    // 비어 있으면 timeout까지만 대기 시간 초과 시 null
+    public T poll(long timeOut, TimeUnit unit) throws InterruptedException {
+        long nanos = unit.toNanos(timeOut);
+        lock.lockInterruptibly();
+
+        try {
+            while (size == 0){
+                if (nanos <= 0) return null;
+                nanos = notEmpty.awaitNanos(nanos); // 남는 대기 시간을 돌려줌
+            }
+            return dequeue();
+        }finally {
+            lock.unlock();
+        }
+    }
 }
