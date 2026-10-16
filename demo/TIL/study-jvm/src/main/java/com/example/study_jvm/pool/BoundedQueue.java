@@ -1,5 +1,8 @@
 package com.example.study_jvm.pool;
 
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
@@ -103,5 +106,26 @@ public class BoundedQueue<T> {
         }finally {
             lock.unlock();
         }
+    }
+
+    public static void main(String[] args) {
+        ThreadPoolExecutor tpe = new ThreadPoolExecutor(
+                2, 4, 1, TimeUnit.SECONDS,
+                new ArrayBlockingQueue<>(2),
+                new ThreadPoolExecutor.AbortPolicy());
+
+        for (int i = 1; i <= 8; i++) {
+            final int id = i;
+            try {
+                tpe.execute(() -> {
+                    System.out.println("task-" + id + " 실행: " + Thread.currentThread().getName());
+                    try { Thread.sleep(2000); } catch (InterruptedException ignored) { }
+                });
+                System.out.println("task-" + id + " 접수됨");
+            } catch (RejectedExecutionException e) {
+                System.out.println("task-" + id + " 거절됨");
+            }
+        }
+        tpe.shutdown();
     }
 }
